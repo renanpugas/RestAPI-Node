@@ -44,6 +44,18 @@ test("Deve pegar perfil de usuário", async ()=>{
 
 });
 
+test("Deve permitir login de usuário", async ()=>{
+
+    const res = await request(app)
+        .post("/login")
+        .send({
+            email: "renan@example.com",
+            senha: "123456"
+        })
+        .expect(200);
+
+});
+
 test("Deve deletar usuário", async()=>{
 
     await request(app)

@@ -14,6 +14,17 @@ router.get("/usuarios/:id", async (req, res, next)=>{
 
 });
 
+router.post("/login", async (req, res, next)=>{
+
+    try {
+        const usuario = await Usuario.login(req.body.email, req.body.senha);
+        res.status(200).send(usuario.email);
+    } catch(e){
+        res.status(404).send("Não foi possível logar");
+    }
+
+});
+
 router.post("/usuarios", async (req, res, next)=>{
 
     const usuario = new Usuario(req.body);
